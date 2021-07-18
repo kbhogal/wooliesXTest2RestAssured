@@ -60,7 +60,7 @@ public class StepDef1 {
  		
  	
  		
- 			//Sunday as 1 Saturday 7 Thursday 5 
+  //Sunday as 1 Saturday 7 Thursday 5 
  		
  		 for(int i =1; i<=16; i++)   {		
             
@@ -74,6 +74,8 @@ public class StepDef1 {
                  .get(); 
 		    
 		    System.out.println(response.getBody().prettyPrint());
+		    
+		    Assert.assertTrue(response.getStatusCode() == 200);
 		    
 		    JsonPath jsonPathEvaluator = response.jsonPath();
 		    Temp[tempIndex] = jsonPathEvaluator.getString("main.temp");
@@ -107,6 +109,7 @@ public class StepDef1 {
         	
         	 //add sydney city assertion and json status code. 
         	 
+        
         	Assert.assertTrue(Float.parseFloat(Temp[i]) > minTemp);
         	
         	if ((i==0) && (Float.parseFloat(Temp[i]) > minTemp)) { 
